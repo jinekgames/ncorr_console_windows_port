@@ -1,5 +1,5 @@
 # Ncorr console windows port
-**This is the port of Ncorr BIC-analyse library converted to console application which can be run with parameters**
+**This is the port of Ncorr BIC-analysis library converted to console application which can be run with parameters**
 
 This program is based on C++ port of [Ncorr library](https://www.ncorr.com/index.php/c-port "Ncorr official webpage")
 > Ncorr: open-source 2D digital image correlation matlab software.
@@ -23,7 +23,7 @@ Compiled executable can be found in `compiled_program/`. But better **u can down
 
 **To run it you are to copy ncorr.exe and also all the dll's located in the folder** (they are opencv dll's).
 This is the console application which means you should run cmd.exe, cd to the exe directory and run it with its name
-Program will console log which arguements u need or can add to the command
+Program will console log which arguments u need or can add to the command
 
 Sample data for test and txt with sample command can be found in `compiled_program/test_sample/`
 
