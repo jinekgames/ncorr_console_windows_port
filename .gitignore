@@ -1,0 +1,8 @@
+# visual studio files
+.vs/
+x64/
+Release/
+Debug/
+*.iobj
+*.ipdb
+*.pdb

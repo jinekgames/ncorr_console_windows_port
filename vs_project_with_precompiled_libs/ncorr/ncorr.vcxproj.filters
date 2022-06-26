@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ncorr">
+      <UniqueIdentifier>{2fcdcf27-bee9-48ff-af3d-2a5cfaabcf7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ncorr\Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="ncorr\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="code">
+      <UniqueIdentifier>{f996b5be-4ca7-4b51-bc11-c33c11f22683}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="code\Header Files">
+      <UniqueIdentifier>{20a3141c-e78e-4060-a8ec-06d4ba997236}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="code\Source Files">
+      <UniqueIdentifier>{9ee85322-6286-4d99-b13f-0f0de4e5a7e2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\ncorr\include\Array2D.h">
+      <Filter>ncorr\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\ncorr\include\Data2D.h">
+      <Filter>ncorr\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\ncorr\include\Disp2D.h">
+      <Filter>ncorr\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\ncorr\include\Image2D.h">
+      <Filter>ncorr\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\ncorr\include\ncorr.h">
+      <Filter>ncorr\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\ncorr\include\ROI2D.h">
+      <Filter>ncorr\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\ncorr\include\Strain2D.h">
+      <Filter>ncorr\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="program code\external_methods.h">
+      <Filter>code\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="program code\_my_parameters.h">
+      <Filter>code\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external_libs\ncorr\include\Array2D.h">
+      <Filter>ncorr\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external_libs\ncorr\include\Data2D.h">
+      <Filter>ncorr\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external_libs\ncorr\include\Disp2D.h">
+      <Filter>ncorr\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external_libs\ncorr\include\Image2D.h">
+      <Filter>ncorr\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external_libs\ncorr\include\ncorr.h">
+      <Filter>ncorr\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external_libs\ncorr\include\ROI2D.h">
+      <Filter>ncorr\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external_libs\ncorr\include\Strain2D.h">
+      <Filter>ncorr\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\ncorr\src\Array2D.cpp">
+      <Filter>ncorr\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\ncorr\src\Data2D.cpp">
+      <Filter>ncorr\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\ncorr\src\Disp2D.cpp">
+      <Filter>ncorr\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\ncorr\src\Image2D.cpp">
+      <Filter>ncorr\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\ncorr\src\ncorr.cpp">
+      <Filter>ncorr\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\ncorr\src\ROI2D.cpp">
+      <Filter>ncorr\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\ncorr\src\Strain2D.cpp">
+      <Filter>ncorr\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\ncorr\src\Array2D.cpp">
+      <Filter>ncorr\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\ncorr\src\Data2D.cpp">
+      <Filter>ncorr\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\ncorr\src\Disp2D.cpp">
+      <Filter>ncorr\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\ncorr\src\Image2D.cpp">
+      <Filter>ncorr\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\ncorr\src\ncorr.cpp">
+      <Filter>ncorr\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\ncorr\src\ROI2D.cpp">
+      <Filter>ncorr\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="external_libs\ncorr\src\Strain2D.cpp">
+      <Filter>ncorr\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="program code\main.cpp">
+      <Filter>code\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

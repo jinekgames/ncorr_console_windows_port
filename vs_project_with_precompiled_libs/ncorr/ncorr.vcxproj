@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{ed36e794-c889-4dd4-b5d6-ccd766a77ea0}</ProjectGuid>
+    <RootNamespace>ncorr</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <ReferencePath>$(VC_ReferencesPath_x64);</ReferencePath>
+    <OutDir>$(SolutionDir)\..\compiled_program</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\ncorr\external_libs\suitesparse\include;$(SolutionDir)\ncorr\external_libs\opencv\include;$(SolutionDir)\ncorr\external_libs\fftw;$(SolutionDir)\ncorr\external_libs\suitesparse\include\suitesparse;$(SolutionDir)\ncorr\external_libs\ncorr\include</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>
+      </AdditionalUsingDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\external_libs\fftw;$(SolutionDir)\external_libs\opencv\lib;$(SolutionDir)\external_libs\opencv\bin;$(SolutionDir)\external_libs\suitesparse\lib;$(SolutionDir)\external_libs\suitesparse\lapack_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libamd.lib;libbtf.lib;libcamd.lib;libccolamd.lib;libcholmod.lib;libcolamd.lib;libcxsparse.lib;libklu.lib;libldl.lib;libspqr.lib;libumfpack.lib;metis.lib;suitesparseconfig.lib;opencv_calib3d454.lib;opencv_core454.lib;opencv_dnn454.lib;opencv_features2d454.lib;opencv_flann454.lib;opencv_gapi454.lib;opencv_highgui454.lib;opencv_imgcodecs454.lib;opencv_imgproc454.lib;opencv_ml454.lib;opencv_objdetect454.lib;opencv_photo454.lib;opencv_stitching454.lib;opencv_video454.lib;opencv_videoio454.lib;libfftw3-3.lib;libfftw3f-3.lib;libfftw3l-3.lib;libblas.lib;liblapack.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\ncorr\external_libs\suitesparse\include;$(SolutionDir)\ncorr\external_libs\opencv\include;$(SolutionDir)\ncorr\external_libs\fftw;$(SolutionDir)\ncorr\external_libs\suitesparse\include\suitesparse;$(SolutionDir)\ncorr\external_libs\ncorr\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\external_libs\fftw;$(SolutionDir)\external_libs\opencv\lib;$(SolutionDir)\external_libs\opencv\bin;$(SolutionDir)\external_libs\suitesparse\lib;$(SolutionDir)\external_libs\suitesparse\lapack_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libamd.lib;libbtf.lib;libcamd.lib;libccolamd.lib;libcholmod.lib;libcolamd.lib;libcxsparse.lib;libklu.lib;libldl.lib;libspqr.lib;libumfpack.lib;metis.lib;suitesparseconfig.lib;opencv_calib3d454.lib;opencv_core454.lib;opencv_dnn454.lib;opencv_features2d454.lib;opencv_flann454.lib;opencv_gapi454.lib;opencv_highgui454.lib;opencv_imgcodecs454.lib;opencv_imgproc454.lib;opencv_ml454.lib;opencv_objdetect454.lib;opencv_photo454.lib;opencv_stitching454.lib;opencv_video454.lib;opencv_videoio454.lib;libfftw3-3.lib;libfftw3f-3.lib;libfftw3l-3.lib;libblas.lib;liblapack.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\ncorr\external_libs\suitesparse\include;$(SolutionDir)\ncorr\external_libs\opencv\include;$(SolutionDir)\ncorr\external_libs\fftw;$(SolutionDir)\ncorr\external_libs\suitesparse\include\suitesparse;$(SolutionDir)\ncorr\external_libs\ncorr\include</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>
+      </AdditionalUsingDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\external_libs\fftw;$(SolutionDir)\external_libs\opencv\lib;$(SolutionDir)\external_libs\opencv\bin;$(SolutionDir)\external_libs\suitesparse\lib;$(SolutionDir)\external_libs\suitesparse\lapack_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libamd.lib;libbtf.lib;libcamd.lib;libccolamd.lib;libcholmod.lib;libcolamd.lib;libcxsparse.lib;libklu.lib;libldl.lib;libspqr.lib;libumfpack.lib;metis.lib;suitesparseconfig.lib;opencv_calib3d454.lib;opencv_core454.lib;opencv_dnn454.lib;opencv_features2d454.lib;opencv_flann454.lib;opencv_gapi454.lib;opencv_highgui454.lib;opencv_imgcodecs454.lib;opencv_imgproc454.lib;opencv_ml454.lib;opencv_objdetect454.lib;opencv_photo454.lib;opencv_stitching454.lib;opencv_video454.lib;opencv_videoio454.lib;libfftw3-3.lib;libfftw3f-3.lib;libfftw3l-3.lib;libblas.lib;liblapack.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level1</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\ncorr\external_libs\suitesparse\include;$(SolutionDir)\ncorr\external_libs\opencv\include;$(SolutionDir)\ncorr\external_libs\fftw;$(SolutionDir)\ncorr\external_libs\suitesparse\include\suitesparse;$(SolutionDir)\ncorr\external_libs\ncorr\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\ncorr\external_libs\fftw;$(SolutionDir)\ncorr\external_libs\opencv\lib;$(SolutionDir)\ncorr\external_libs\opencv\bin;$(SolutionDir)\ncorr\external_libs\suitesparse\lib;$(SolutionDir)\ncorr\external_libs\suitesparse\lapack_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libamd.lib;libbtf.lib;libcamd.lib;libccolamd.lib;libcholmod.lib;libcolamd.lib;libcxsparse.lib;libklu.lib;libldl.lib;libspqr.lib;libumfpack.lib;metis.lib;suitesparseconfig.lib;opencv_calib3d454.lib;opencv_core454.lib;opencv_dnn454.lib;opencv_features2d454.lib;opencv_flann454.lib;opencv_gapi454.lib;opencv_highgui454.lib;opencv_imgcodecs454.lib;opencv_imgproc454.lib;opencv_ml454.lib;opencv_objdetect454.lib;opencv_photo454.lib;opencv_stitching454.lib;opencv_video454.lib;opencv_videoio454.lib;libfftw3-3.lib;libfftw3f-3.lib;libfftw3l-3.lib;libblas.lib;liblapack.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\ncorr\include\Array2D.h" />
+    <ClInclude Include="..\..\..\ncorr\include\Data2D.h" />
+    <ClInclude Include="..\..\..\ncorr\include\Disp2D.h" />
+    <ClInclude Include="..\..\..\ncorr\include\Image2D.h" />
+    <ClInclude Include="..\..\..\ncorr\include\ncorr.h" />
+    <ClInclude Include="..\..\..\ncorr\include\ROI2D.h" />
+    <ClInclude Include="..\..\..\ncorr\include\Strain2D.h" />
+    <ClInclude Include="external_libs\ncorr\include\Array2D.h" />
+    <ClInclude Include="external_libs\ncorr\include\Data2D.h" />
+    <ClInclude Include="external_libs\ncorr\include\Disp2D.h" />
+    <ClInclude Include="external_libs\ncorr\include\Image2D.h" />
+    <ClInclude Include="external_libs\ncorr\include\ncorr.h" />
+    <ClInclude Include="external_libs\ncorr\include\ROI2D.h" />
+    <ClInclude Include="external_libs\ncorr\include\Strain2D.h" />
+    <ClInclude Include="program code\external_methods.h" />
+    <ClInclude Include="program code\_my_parameters.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\ncorr\src\Array2D.cpp" />
+    <ClCompile Include="..\..\..\ncorr\src\Data2D.cpp" />
+    <ClCompile Include="..\..\..\ncorr\src\Disp2D.cpp" />
+    <ClCompile Include="..\..\..\ncorr\src\Image2D.cpp" />
+    <ClCompile Include="..\..\..\ncorr\src\ncorr.cpp" />
+    <ClCompile Include="..\..\..\ncorr\src\ROI2D.cpp" />
+    <ClCompile Include="..\..\..\ncorr\src\Strain2D.cpp" />
+    <ClCompile Include="external_libs\ncorr\src\Array2D.cpp" />
+    <ClCompile Include="external_libs\ncorr\src\Data2D.cpp" />
+    <ClCompile Include="external_libs\ncorr\src\Disp2D.cpp" />
+    <ClCompile Include="external_libs\ncorr\src\Image2D.cpp" />
+    <ClCompile Include="external_libs\ncorr\src\ncorr.cpp" />
+    <ClCompile Include="external_libs\ncorr\src\ROI2D.cpp" />
+    <ClCompile Include="external_libs\ncorr\src\Strain2D.cpp" />
+    <ClCompile Include="program code\main.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

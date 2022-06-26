@@ -1,0 +1,1 @@
+ncorr.exe calculate -p .\test_sample\images -n ohtcfrp_ -c 12
