@@ -22,7 +22,6 @@
     <LocalDebuggerEnvironment>
     </LocalDebuggerEnvironment>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>
-    </LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>load -p C:\Users\ujinv\Desktop\_My_Docks_\sharaga\Kursach_6sem\DIC_tension_09G2S\BINARIES_skip1 --plot 1 --alpha 1 --color 2</LocalDebuggerCommandArguments>
   </PropertyGroup>
 </Project>

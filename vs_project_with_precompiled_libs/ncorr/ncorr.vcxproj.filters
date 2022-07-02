@@ -23,27 +23,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\ncorr\include\Array2D.h">
-      <Filter>ncorr\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\ncorr\include\Data2D.h">
-      <Filter>ncorr\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\ncorr\include\Disp2D.h">
-      <Filter>ncorr\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\ncorr\include\Image2D.h">
-      <Filter>ncorr\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\ncorr\include\ncorr.h">
-      <Filter>ncorr\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\ncorr\include\ROI2D.h">
-      <Filter>ncorr\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\ncorr\include\Strain2D.h">
-      <Filter>ncorr\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="program code\external_methods.h">
       <Filter>code\Header Files</Filter>
     </ClInclude>
@@ -73,27 +52,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\ncorr\src\Array2D.cpp">
-      <Filter>ncorr\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\ncorr\src\Data2D.cpp">
-      <Filter>ncorr\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\ncorr\src\Disp2D.cpp">
-      <Filter>ncorr\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\ncorr\src\Image2D.cpp">
-      <Filter>ncorr\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\ncorr\src\ncorr.cpp">
-      <Filter>ncorr\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\ncorr\src\ROI2D.cpp">
-      <Filter>ncorr\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\ncorr\src\Strain2D.cpp">
-      <Filter>ncorr\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="external_libs\ncorr\src\Array2D.cpp">
       <Filter>ncorr\Source Files</Filter>
     </ClCompile>

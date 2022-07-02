@@ -162,13 +162,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\ncorr\include\Array2D.h" />
-    <ClInclude Include="..\..\..\ncorr\include\Data2D.h" />
-    <ClInclude Include="..\..\..\ncorr\include\Disp2D.h" />
-    <ClInclude Include="..\..\..\ncorr\include\Image2D.h" />
-    <ClInclude Include="..\..\..\ncorr\include\ncorr.h" />
-    <ClInclude Include="..\..\..\ncorr\include\ROI2D.h" />
-    <ClInclude Include="..\..\..\ncorr\include\Strain2D.h" />
     <ClInclude Include="external_libs\ncorr\include\Array2D.h" />
     <ClInclude Include="external_libs\ncorr\include\Data2D.h" />
     <ClInclude Include="external_libs\ncorr\include\Disp2D.h" />
@@ -180,13 +173,6 @@
     <ClInclude Include="program code\_my_parameters.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\ncorr\src\Array2D.cpp" />
-    <ClCompile Include="..\..\..\ncorr\src\Data2D.cpp" />
-    <ClCompile Include="..\..\..\ncorr\src\Disp2D.cpp" />
-    <ClCompile Include="..\..\..\ncorr\src\Image2D.cpp" />
-    <ClCompile Include="..\..\..\ncorr\src\ncorr.cpp" />
-    <ClCompile Include="..\..\..\ncorr\src\ROI2D.cpp" />
-    <ClCompile Include="..\..\..\ncorr\src\Strain2D.cpp" />
     <ClCompile Include="external_libs\ncorr\src\Array2D.cpp" />
     <ClCompile Include="external_libs\ncorr\src\Data2D.cpp" />
     <ClCompile Include="external_libs\ncorr\src\Disp2D.cpp" />

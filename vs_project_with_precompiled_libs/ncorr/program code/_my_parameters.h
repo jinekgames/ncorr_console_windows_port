@@ -49,6 +49,8 @@ both comands can be run with optional arguements\n\
    output type: 1 - only logs, 2 - only .avi's, not specified - all\n\
 --pointi\n\
    if use logs mode or all mode u can specify index of dot u want to get strain values on (index = y*width + x, width u can get every time run in logs or all mode)\n\
+--color\n\
+   choose colormap for plots: 1 - rainbow, 2 - black&white (by default rainbow)\n\
 \n\
 arguements can be written in random order\n\
 good luck\n\n"

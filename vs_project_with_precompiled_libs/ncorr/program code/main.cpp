@@ -34,9 +34,9 @@ namespace fs = std::filesystem;
 
 
 
-const size_t countOfCmds = 11;
-const char cmdNames[countOfCmds][10] = { "-p", "-n", "-c", "-f", "-s", "-m", "--fps", "--plot", "--alpha", "--mode", "--pointi" };
-enum cmdComands { path = 0, name, count, format, skip, multi, fps, plot, alpha, mode, pointi };
+const size_t countOfCmds = 12;
+const char cmdNames[countOfCmds][10] = { "-p", "-n", "-c", "-f", "-s", "-m", "--fps", "--plot", "--alpha", "--mode", "--pointi", "--color" };
+enum cmdComands { path = 0, name, count, format, skip, multi, fps, plot, alpha, mode, pointi, colormap };
 
 
 typedef byte OUTPUT_MODE_TYPE;
@@ -168,6 +168,19 @@ try {
 	const int plotFormat  = (cmds[plot])  ? atoi(argv[cmds[plot]])  : 0;
 	const float plotAlpha = (cmds[alpha]) ? atof(argv[cmds[alpha]]) : 0.5;
 	const OUTPUT_MODE_TYPE outputMode = (cmds[mode]) ? atoi(argv[cmds[mode]]) : OUTPUT_MODE::ALL;
+	cv::ColormapTypes colormapType = cv::COLORMAP_JET;
+	if (cmds[colormap]) {
+		switch (atoi(argv[cmds[colormap]]))
+		{
+		case 2: {
+			colormapType = cv::COLORMAP_BONE;
+		} break;
+		case 1:
+		default: {
+			colormapType = cv::COLORMAP_JET;
+		} break;
+		}
+	}
 
         
 	// Create Videos ---------------------------------------//
@@ -223,7 +236,11 @@ try {
 			std::numeric_limits<double>::quiet_NaN(),
 			plotFormat >= 1,
 			plotFormat >= 3,
-			plotFormat >= 2
+			plotFormat >= 2,
+			-1.0,
+			1.0,
+			11,
+			colormapType
 		);
 
 		save_DIC_video(
@@ -237,7 +254,11 @@ try {
 			std::numeric_limits<double>::quiet_NaN(),
 			plotFormat >= 1,
 			plotFormat >= 3,
-			plotFormat >= 2
+			plotFormat >= 2,
+			- 1.0,
+			1.0,
+			11,
+			colormapType
 		);
 
 		save_strain_video(
@@ -251,7 +272,11 @@ try {
 			std::numeric_limits<double>::quiet_NaN(),
 			plotFormat >= 1,
 			plotFormat >= 3,
-			plotFormat >= 2
+			plotFormat >= 2,
+			-1.0,
+			1.0,
+			11,
+			colormapType
 		);
 
 		save_strain_video(
@@ -265,7 +290,11 @@ try {
 			std::numeric_limits<double>::quiet_NaN(),
 			plotFormat >= 1,
 			plotFormat >= 3,
-			plotFormat >= 2
+			plotFormat >= 2,
+			-1.0,
+			1.0,
+			11,
+			colormapType
 		);
 
 		save_strain_video(
@@ -279,7 +308,11 @@ try {
 			std::numeric_limits<double>::quiet_NaN(),
 			plotFormat >= 1,
 			plotFormat >= 3,
-			plotFormat >= 2
+			plotFormat >= 2,
+			-1.0,
+			1.0,
+			11,
+			colormapType
 		);
 
 	}
