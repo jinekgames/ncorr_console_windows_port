@@ -1,9 +1,7 @@
 #pragma once
 
-
 #ifndef __EXTERNAL_METHODS_H__
 #define __EXTERNAL_METHODS_H__
-
 
 #include "ncorr.h"
 #include <string>
@@ -13,8 +11,6 @@
 
 
 namespace ncorr {
-
-
 
 	typedef byte STRAIN_LOG_TYPE;
 
@@ -118,9 +114,6 @@ namespace ncorr {
 
 	} // function save_strain_logs
 
-
-
 } // namespace ncorr
-
 
 #endif // !__EXTERNAL_METHODS_H__
