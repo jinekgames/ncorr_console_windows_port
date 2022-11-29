@@ -6,3 +6,6 @@ Debug/
 *.iobj
 *.ipdb
 *.pdb
+
+# compile output
+compiled_program/
