@@ -5,6 +5,22 @@
 * Experimental Mechanics 55 (6), 1105-1122
 */
 
+/**
+* TODO:
+*	- custom name of out folder
+*		set the out folder name or path
+*		the frolder should be created if does not exists
+*		the folder should be cleaned before calculations
+*	- make new cmd parsing system (like in perfetto)
+*	- clean main
+*		move steps in external functions
+*		move some definitions to header
+*		refactor _my_params.h
+*	- add CMakes
+*	- make external libs CMake dependencies or add repos' ink to git system
+*	- make GUI
+*/
+
 
 #define _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS
 #define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING
@@ -30,13 +46,13 @@ namespace fs = std::filesystem;
 
 
 #define BIN_DIR_NAME "BINARIES_"
-#define AVI_DIR_NAME "VIDEOS_"
+#define AVI_DIR_NAME "OUTPUTS_"
 
 
 
-const size_t countOfCmds = 12;
-const char cmdNames[countOfCmds][10] = { "-p", "-n", "-c", "-f", "-s", "-m", "--fps", "--plot", "--alpha", "--mode", "--pointi", "--color" };
-enum cmdComands { path = 0, name, count, format, skip, multi, fps, plot, alpha, mode, pointi, colormap };
+const size_t countOfCmds = 13;
+const char cmdNames[countOfCmds][18] = { "-p", "-n", "-c", "-f", "-s", "-m", "--fps", "--plot", "--alpha", "--mode", "--pointi", "--color", "--units-per-pixel" };
+enum cmdComands { path = 0, name, count, format, skip, multi, fps, plot, alpha, mode, pointi, colormap, units_per_pixel };
 
 
 typedef byte OUTPUT_MODE_TYPE;
@@ -88,7 +104,12 @@ try {
 	strain_analysis_input  strain_input;
 	strain_analysis_output strain_output;
 
-	const auto calculationsStartTime = GetTickCount();
+	// lagrangian variables @note lagr declaration
+	DIC_analysis_output    DIC_output_lagr;
+	strain_analysis_input  strain_input_lagr;
+	strain_analysis_output strain_output_lagr;
+
+	const auto calculationsStartTime = GetTickCount64();
 	char buf[30];
 
 	// Determine whether or not to perform calculations or 
@@ -103,6 +124,10 @@ try {
 		strain_input  =  strain_analysis_input::load(pathToFiles + "\\strain_input.bin");
 		strain_output = strain_analysis_output::load(pathToFiles + "\\strain_output.bin");
 
+		// @note load lagr inputs (only this will be used)
+		DIC_output_lagr    =    DIC_analysis_output::load(pathToFiles + "\\DIC_output_lagr.bin");
+		strain_output_lagr = strain_analysis_output::load(pathToFiles + "\\strain_output_lagr.bin");
+
 	} else if (input == "calculate") {
 
 		// Parameters
@@ -112,6 +137,7 @@ try {
 		const size_t		fillSize       = CountOfSymbols(picturesCount - 1);
 		const std::string   picturesFormat = (cmds[format]) ? argv[cmds[format]]     : "png";
 		const size_t        iteratorStep   = (cmds[skip])   ? atoi(argv[cmds[skip]]) : 1;
+		const float         unitsPerPixel  = (cmds[units_per_pixel]) ? atof(argv[cmds[units_per_pixel]]) : 0.2;
 
 		// Set images
 		std::vector<Image2D> imgs;
@@ -136,10 +162,14 @@ try {
 
 		// Perform DIC_analysis    
 		DIC_output = DIC_analysis(DIC_input);
-		// Convert DIC_output to Eulerian perspective
+		// @note save lagr dic output
+		DIC_output_lagr = DIC_output;
+		// @remind Convert DIC_output to Eulerian perspective
 		DIC_output = change_perspective(DIC_output, INTERP::QUINTIC_BSPLINE_PRECOMPUTE);
 		// Set units of DIC_output (provide units/pixel)
-		DIC_output = set_units(DIC_output, "mm", 0.2);
+		DIC_output = set_units(DIC_output, "mm", unitsPerPixel);
+		// Set units of DIC_output (provide units/pixel)
+		DIC_output_lagr = set_units(DIC_output_lagr, "mm", unitsPerPixel);
 
 		// Set strain input
 		strain_input = strain_analysis_input(
@@ -151,6 +181,16 @@ try {
 		// Perform strain_analysis
 		strain_output = strain_analysis(strain_input); 
 		
+		// @note lagr strain input
+		strain_input_lagr = strain_analysis_input(
+			DIC_input,
+			DIC_output_lagr,
+			SUBREGION::CIRCLE,     // Strain subregion shape
+			5                      // Strain subregion radius
+		);
+		// @note lagr strain_analysis
+		strain_output_lagr = strain_analysis(strain_input_lagr); 
+		
 		// Save outputs as binary
 		std::string newDirPath = pathToFiles + "\\" + std::string(BIN_DIR_NAME) + itoa(calculationsStartTime, buf, 10);
 		fs::create_directories(newDirPath);
@@ -160,13 +200,18 @@ try {
 		save(strain_input,  newDirPath + "\\strain_input.bin");
 		save(strain_output, newDirPath + "\\strain_output.bin");
 
+		// @note save lagr outputs
+		save(DIC_output_lagr,    newDirPath + "\\DIC_output_lagr.bin");
+		save(strain_output_lagr, newDirPath + "\\strain_output_lagr.bin");
+
 	} else {
 		throw std::invalid_argument("Input of " + input + " is not recognized. Must be either 'calculate' or 'load'");	
 	}		
 
-	const int plotFPS     = (cmds[fps])   ? atoi(argv[cmds[fps]])   : 15;
-	const int plotFormat  = (cmds[plot])  ? atoi(argv[cmds[plot]])  : 0;
-	const float plotAlpha = (cmds[alpha]) ? atof(argv[cmds[alpha]]) : 0.5;
+	// @todo move default values to another place
+	const int   plotFPS    = (cmds[fps])   ? atoi(argv[cmds[fps]])   : 15;
+	const int   plotFormat = (cmds[plot])  ? atoi(argv[cmds[plot]])  : 0;
+	const float plotAlpha  = (cmds[alpha]) ? atof(argv[cmds[alpha]]) : 0.5;
 	const OUTPUT_MODE_TYPE outputMode = (cmds[mode]) ? atoi(argv[cmds[mode]]) : OUTPUT_MODE::ALL;
 	cv::ColormapTypes colormapType = cv::COLORMAP_JET;
 	if (cmds[colormap]) {
@@ -197,29 +242,75 @@ try {
 
 		const int point_index = (cmds[pointi]) ? atoi(argv[cmds[pointi]]) : -1;
 
-		save_strain_logs(
-			newDirPath,
-			strain_output,
-			STRAIN::EXX,
-			STRAIN_LOG::ALL,
-			point_index
-		);
+		try {
 
-		save_strain_logs(
-			newDirPath,
-			strain_output,
-			STRAIN::EYY,
-			STRAIN_LOG::ALL,
-			point_index
-		);
+			// save eulerian strain logs
+			save_strain_logs(
+				newDirPath,
+				strain_output,
+				STRAIN::EXX,
+				STRAIN_LOG::ALL,
+				point_index
+			);
+			save_strain_logs(
+				newDirPath,
+				strain_output,
+				STRAIN::EYY,
+				STRAIN_LOG::ALL,
+				point_index
+			);
+			save_strain_logs(
+				newDirPath,
+				strain_output,
+				STRAIN::EXY,
+				STRAIN_LOG::ALL,
+				point_index
+			);
 
-		save_strain_logs(
-			newDirPath,
-			strain_output,
-			STRAIN::EXY,
-			STRAIN_LOG::ALL,
-			point_index
-		);
+			// @note save lagr strain logs
+			save_strain_logs(
+				newDirPath,
+				strain_output_lagr,
+				STRAIN::EXX,
+				STRAIN_LOG::ALL,
+				point_index,
+				"lagr"
+			);
+			save_strain_logs(
+				newDirPath,
+				strain_output_lagr,
+				STRAIN::EYY,
+				STRAIN_LOG::ALL,
+				point_index,
+				"lagr"
+			);
+			save_strain_logs(
+				newDirPath,
+				strain_output_lagr,
+				STRAIN::EXY,
+				STRAIN_LOG::ALL,
+				point_index,
+				"lagr"
+			);
+
+			// save DIC logs
+			save_DIC_logs(
+				newDirPath,
+				DIC_output_lagr,
+				DISP::U,
+				point_index
+			);
+			save_DIC_logs(
+				newDirPath,
+				DIC_output_lagr,
+				DISP::V,
+				point_index
+			);
+
+		}
+		catch (const char* e) {
+			std::cout << "Can't perform table data saving\n" << e << std::endl;
+		}
 
 	}
 
@@ -235,8 +326,8 @@ try {
 			std::numeric_limits<double>::quiet_NaN(),
 			std::numeric_limits<double>::quiet_NaN(),
 			plotFormat >= 1,
-			plotFormat >= 3,
 			plotFormat >= 2,
+			plotFormat >= 3,
 			-1.0,
 			1.0,
 			11,
@@ -253,8 +344,8 @@ try {
 			std::numeric_limits<double>::quiet_NaN(),
 			std::numeric_limits<double>::quiet_NaN(),
 			plotFormat >= 1,
-			plotFormat >= 3,
 			plotFormat >= 2,
+			plotFormat >= 3,
 			- 1.0,
 			1.0,
 			11,
@@ -271,8 +362,8 @@ try {
 			std::numeric_limits<double>::quiet_NaN(),
 			std::numeric_limits<double>::quiet_NaN(),
 			plotFormat >= 1,
-			plotFormat >= 3,
 			plotFormat >= 2,
+			plotFormat >= 3,
 			-1.0,
 			1.0,
 			11,
@@ -289,8 +380,8 @@ try {
 			std::numeric_limits<double>::quiet_NaN(),
 			std::numeric_limits<double>::quiet_NaN(),
 			plotFormat >= 1,
-			plotFormat >= 3,
 			plotFormat >= 2,
+			plotFormat >= 3,
 			-1.0,
 			1.0,
 			11,
@@ -307,8 +398,8 @@ try {
 			std::numeric_limits<double>::quiet_NaN(),
 			std::numeric_limits<double>::quiet_NaN(),
 			plotFormat >= 1,
-			plotFormat >= 3,
 			plotFormat >= 2,
+			plotFormat >= 3,
 			-1.0,
 			1.0,
 			11,

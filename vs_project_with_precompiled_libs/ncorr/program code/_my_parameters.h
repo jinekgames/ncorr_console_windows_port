@@ -25,7 +25,9 @@ size_t CountOfSymbols(int number) {
 "In command line arguements you should specify task you need to be done 'load' or 'calculate'\n\
 - load\n\
   loads calculated bins and make plots in .avi files or logs\n\
-  arguements:  -p  path to the folder with bins (.avi would be saved there)\n\
+  arguements:\n\
+     -p  path to the folder with bins (.avi would be saved there)\n\
+     --units-per-pixel\n\
 - calculate\n\
   read images and make DIC analisys, then save bins and .avi plots or logs of strains (exx, eyy, exy) and displacemants (u, v)\n\
   arguements:  -p, -n, -c, -f (optional), -s (optional), -m (optional)\n\
